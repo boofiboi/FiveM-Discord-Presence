@@ -5,7 +5,7 @@ The script itself is not framework dependent, but without a framework most style
 
 # Installation
 
- 1. Download the latest release from the Releases tab
+ 1. Download the latest release from the [Releases](https://github.com/boofiboi/FiveM-Discord-Presence/releases) tab
  2. Place the folder inside of the archive anywhere in your resources folder
  3. Configure the script according to the config file and the [Wiki](https://github.com/boofiboi/FiveM-Discord-Presence/wiki/Configuration)
  4. Put `ensure Discord-Presence` anywhere in your server.cfg
