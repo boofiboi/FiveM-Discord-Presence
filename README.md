@@ -1,8 +1,9 @@
 # **FiveM Discord Rich Presence**
 
 ## The first iteration of a fully customizable, open source script to create a custom, "high effort" rich presence for your server. 
-The script itself is not framework dependent, although ESX compatibility was not tested.
-But without a framework most styles currently included don't work.
+The script itself is not framework dependent, But without a framework most styles currently included don't work. 
+Although ESX compatibility was not tested, it should function properly.
+
 
 # Installation
 
@@ -25,7 +26,7 @@ create a new [issue](https://github.com/boofiboi/FiveM-Discord-Presence/issues/n
 #### Do you have a new style for the presence in mind and want it included? You can do 2 things:
 
  1. Add it into the script yourself according to the [Wiki](https://github.com/boofiboi/FiveM-Discord-Presence/wiki/Creating-a-new-style) and then submit a pull request.
- 2. Create a new issue describing how you want to look it, and depending if I like it I might add it into the script.
+ 2. Create a new issue describing how you want it to look, and depending if I like it I might add it into the script.
 
 # Final words
 
