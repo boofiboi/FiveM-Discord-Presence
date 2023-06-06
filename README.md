@@ -16,7 +16,9 @@ The script itself is not framework dependent, but without a framework most style
 The script itself does not have any usable commands/events.
 
 # Issues?
-Create a new [issue](https://github.com/boofiboi/FiveM-Discord-Presence/issues/new)
+
+Are the comments in the config not enough? Try looking [here](https://github.com/boofiboi/FiveM-Discord-Presence/wiki/Configuration) or 
+create a new [issue](https://github.com/boofiboi/FiveM-Discord-Presence/issues/new)
 
 # Contributing new presence styles
 #### Do you have a new style for the presence in mind and want it included? You can do 2 things:
