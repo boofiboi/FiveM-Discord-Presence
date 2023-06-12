@@ -7,6 +7,7 @@ if Config.Framework == 'ESX' then
     if ESX.GetPlayerData().identifier ~= nil then
         LoadedAndReady = true
     end
+     playerData = ESX.GetPlayerData()
 elseif Config.Framework == 'QB' or Config.Framework == nil then
      QBCore = exports['qb-core']:GetCoreObject()
 if QBCore.Functions.GetPlayerData().citizenid ~= nil then
