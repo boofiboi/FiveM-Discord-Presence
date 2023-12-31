@@ -55,7 +55,7 @@ Health = math.floor(GetEntityHealth(PlayerPedId()) / 25)
 end
 
 function location()
-    local coords = GetEntityCoords(ped)
+    local coords = GetEntityCoords(PlayerPedId())
     local location = GetStreetNameFromHashKey(GetStreetNameAtCoord(coords[1], coords[2], coords[3]))
     return Config.LocationText .. ' ' .. location
 end
