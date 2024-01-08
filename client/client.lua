@@ -81,7 +81,7 @@ Citizen.CreateThread(function()
                 SetDiscordRichPresenceAction(0, Config.Discord.Button1Text, Config.Discord.Button1Link)
                 SetDiscordRichPresenceAction(1, Config.Discord.Button2Text, Config.Discord.Button2Link)
         end
-        Citizen.Wait(5000)
+        Citizen.Wait(Config.Delay)
     end
 end)
 
