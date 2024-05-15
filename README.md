@@ -1,6 +1,8 @@
 # **FiveM Discord Rich Presence**
 
-## The first iteration of a fully customizable, open source script to create a custom, "high effort" rich presence for your server. 
+### I am planning an entire rewrite of this.
+
+## Fully customizable, open source script to create a custom, "high effort" rich presence for your server. 
 The script itself is not framework dependent, but without a framework most styles currently included don't work. 
 Although ESX compatibility was not tested, it should function properly.
 
@@ -15,7 +17,7 @@ Although ESX compatibility was not tested, it should function properly.
 
 # Usage
 
-The script itself does not have any usable commands/events.
+The script itself does not have any usable commands/events.  (This will get changed in a later update as of 15.5.24!)
 
 # Issues?
 
