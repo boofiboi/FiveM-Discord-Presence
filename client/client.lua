@@ -33,7 +33,8 @@ local h_tbl = {
 
 
 function custom()
-    math.randomseed(os.time())
+    local year, month, day, hour, second, minute = GetUtcTime()
+    math.randomseed(year .. month .. day .. hour .. second .. minute)
     local randomIndex = math.random(0, #Config.CustomText) 
     local randomElement = Config.CustomText[randomIndex]
     return randomElement
@@ -64,7 +65,7 @@ function nameandid()
     if Config.Framework == 'QB' then
        return 'ID: ' .. GetPlayerServerId() .. ' | ' .. playerData.charinfo.firstname  .. ' ' .. playerData.charinfo.lastname
     elseif Config.Framework == 'ESX' then
-        return 'ID: ' .. GetPlayerServerId() .. ' | ' .. playerData.firstName  .. ' ' .. playerData.lastName
+        return 'ID: ' .. GetPlayerServerId() .. ' | ' .. ESX.GetPlayerData().firstName  .. ' ' .. ESX.GetPlayerData().lastName
     end
 end
 
