@@ -22,5 +22,5 @@ create a new [issue](https://github.com/boofiboi/FiveM-Discord-Presence/issues/n
 
 # Final words
 
-Big thanks to Virtual Vision Studios over on discord, who helped me catch a lot of errors.
+Big thanks to Virtual Vision Studios over on discord, who helped me catch a lot of errors. I'd consider this person to be my lead QA tester.
 
