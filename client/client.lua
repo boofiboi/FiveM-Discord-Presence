@@ -1,8 +1,14 @@
 -- Variables
 local LoadedAndReady = false
 PlayerData = {}
-Config.Framework = TriggerServerEvent('discord:checkframework')
-
+Framework = TriggerServerEvent('discord:checkframework')
+if Framework == false then
+-- False means we reppin ESX.
+Config.Framework = 'ESX'
+elseif Framework == true then
+-- True means QB.
+Config.Framework = 'QB'
+end
 
 -- Framework shared objects.
 if Config.Framework == 'ESX' then
@@ -94,8 +100,10 @@ end)
 -- Useless stuff just to know when player has chosen a character so we dont try getting his status when he doesnt have one.
 RegisterNetEvent('esx:playerLoaded', function(playerData)
 LoadedAndReady = true
+Config.Framework = 'ESX'
 end)
 RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
-LoadedAndReady = true  
+LoadedAndReady = true
+Config.Framework = 'ESX'
 playerData = QBCore.Functions.GetPlayerData()
 end)

@@ -1,5 +1,4 @@
 Config = {} 
-Config.Version = '1.1'
 
 -- DON'T TOUCH ANYTHING ABOVE THIS TEXT, YOU WILL BREAK IT!
 
@@ -14,8 +13,8 @@ nameandid // QB, ESX - Shows the player's character name and the player ID.
 custom // QB, ESX, STANDALONE - Shows custom text, if more than one option is present in the Config.CustomText array, will randomly cycle through them.
 --]] 
 
-Config.Line1 = 'CHANGEME'
-Config.Line2 = 'CHANGEME'
+Config.Line1 = 'nameandid'
+Config.Line2 = 'location'
 -- You can mix&match all of the presets above.
 
 
@@ -29,10 +28,10 @@ Config.CustomText = {
 
 --Anything you dont want to show up can be left blank.
 Config.Discord = {
-AppId = "CHANGEME", -- The discord application ID.
-BigAsset = 'CHANGEME', -- Name of a rich presence asset, will show up as the big image
+AppId = "875553015539564574", -- The discord application ID.
+BigAsset = 'dnrp2logo', -- Name of a rich presence asset, will show up as the big image
 BigText = 'CHANGEME', -- Text that will show when someone hovers over the big image
-SmallAsset = 'CHANGEME', -- Small image asset name
+SmallAsset = 'dnrp2logo', -- Small image asset name
 SmallText = 'CHANGEME', -- Text that will appear when hovering over small image
 Button1Text = 'CHANGEME', -- Text that will appear on the first button
 Button1Link = 'CHANGEME', -- Link that will open when pressing the first button
