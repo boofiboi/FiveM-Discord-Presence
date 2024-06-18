@@ -28,10 +28,10 @@ Config.CustomText = {
 
 --Anything you dont want to show up can be left blank.
 Config.Discord = {
-AppId = "875553015539564574", -- The discord application ID.
-BigAsset = 'dnrp2logo', -- Name of a rich presence asset, will show up as the big image
+AppId = "CHANGEME", -- The discord application ID.
+BigAsset = 'CHANGEME', -- Name of a rich presence asset, will show up as the big image
 BigText = 'CHANGEME', -- Text that will show when someone hovers over the big image
-SmallAsset = 'dnrp2logo', -- Small image asset name
+SmallAsset = 'CHANGEME', -- Small image asset name
 SmallText = 'CHANGEME', -- Text that will appear when hovering over small image
 Button1Text = 'CHANGEME', -- Text that will appear on the first button
 Button1Link = 'CHANGEME', -- Link that will open when pressing the first button
