@@ -11,7 +11,7 @@ Config = {} -- DONT TOUCH THIS PLEASE!
     This is the first version of a script I plan to support with more styles, functions and possibly even commands to change between these presets on a per player base.
     Issues will solely be resolved on the Github. You can also suggest new styles/features
 --]]
-Version = '1.1'
+Config.Version = '1.1'
 Config.Framework = 'CHANGEME' -- ESX, QB, STANDALONE | Consider using a framework with this script, as a lot of the functions are based on a framework. Defaults to QBCore
 Config.Delay = 5000 -- Delay between presence updates, in ms.
 --[[ Change this to whatever you like, previews are available on Github: 
