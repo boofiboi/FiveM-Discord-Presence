@@ -1,6 +1,8 @@
 -- Variables
 local LoadedAndReady = false
 PlayerData = {}
+Config.Framework = TriggerServerEvent('discord:checkframework')
+
 
 -- Framework shared objects.
 if Config.Framework == 'ESX' then
