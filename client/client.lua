@@ -1,6 +1,7 @@
 -- Variables
 local LoadedAndReady = false
 PlayerData = {}
+
 -- Framework shared objects.
 if Config.Framework == 'ESX' then
      ESX = exports['es_extended']:getSharedObject()
@@ -58,14 +59,14 @@ end
 function location()
     local coords = GetEntityCoords(PlayerPedId())
     local location = GetStreetNameFromHashKey(GetStreetNameAtCoord(coords[1], coords[2], coords[3]))
-    return Config.LocationText .. ' ' .. location
+    return '🗺️ ' .. '[ ' .. location .. ' ]'
 end
 
 function nameandid() 
     if Config.Framework == 'QB' then
-       return 'ID: ' .. GetPlayerServerId() .. ' | ' .. playerData.charinfo.firstname  .. ' ' .. playerData.charinfo.lastname
+       return '🧑' .. ' [ ' .. playerData.charinfo.firstname  .. ' ' .. playerData.charinfo.lastname .. ' ]'
     elseif Config.Framework == 'ESX' then
-        return 'ID: ' .. GetPlayerServerId() .. ' | ' .. ESX.GetPlayerData().firstName  .. ' ' .. ESX.GetPlayerData().lastName
+        return  '🧑' .. ' [ ' .. ESX.GetPlayerData().firstName  .. ' ' .. ESX.GetPlayerData().lastName .. ' ]'
     end
 end
 
@@ -74,7 +75,7 @@ Citizen.CreateThread(function()
     while true do
         if LoadedAndReady then
                 SetDiscordAppId(Config.Discord.AppId)
-                SetRichPresence(_G[Config.Style]())
+                SetRichPresence(_G[Config.Line2]() .. string.char(10) .. _G[Config.Line1]())
                 SetDiscordRichPresenceAsset(Config.Discord.BigAsset)
                 SetDiscordRichPresenceAssetText(Config.Discord.BigText)
                 SetDiscordRichPresenceAssetSmall(Config.Discord.SmallAsset)
@@ -85,7 +86,6 @@ Citizen.CreateThread(function()
         Citizen.Wait(Config.Delay)
     end
 end)
-
 
 
 
