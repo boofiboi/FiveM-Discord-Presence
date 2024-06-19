@@ -134,22 +134,6 @@ function line2()
         return Config.Discord.Line2
     end
 end
-function Button1()
-    local matched_string = find_matching_string(Config.Discord.Button1Text)
-    if matched_string then
-        return _G[matched_string]()
-    else
-        return Config.Discord.Button1Text
-    end
-end
-function Button2()
-    local matched_string = find_matching_string(Config.Discord.Button2Text)
-    if matched_string then
-        return _G[matched_string]()
-    else
-        return Config.Discord.Button2Text
-    end
-end
 
 
 --- Actual RPC part.
@@ -162,8 +146,8 @@ Citizen.CreateThread(function()
                 SetDiscordRichPresenceAssetText(BigText())
                 SetDiscordRichPresenceAssetSmall(Config.Discord.SmallAsset)
                 SetDiscordRichPresenceAssetSmallText(SmallText())
-                SetDiscordRichPresenceAction(0, Button1(), Config.Discord.Button1Link)
-                SetDiscordRichPresenceAction(1, Button2(), Config.Discord.Button2Link)
+                SetDiscordRichPresenceAction(0, Config.Discord.Button1Text, Config.Discord.Button1Link)
+                SetDiscordRichPresenceAction(1, Config.Discord.Button2Text, Config.Discord.Button2Link)
         end
         Citizen.Wait(Config.Delay)
     end
