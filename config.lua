@@ -32,12 +32,12 @@ Line2 = 'location'
 
 --Anything you dont want to show up can be left blank, except for AppId.
 Config.Discord = {
-AppId = "875553015539564574", -- The discord application ID.
-BigAsset = 'dnrp2logo', -- Name of a rich presence asset, will show up as the big image
-BigText = 'healthdisplay', -- Text that will show when someone hovers over the big image
-SmallAsset = 'dnrp2logo',-- Small image asset name
-Line1 = 'nameandid', -- Text that will appear on line #1
-Line2 = 'location',  -- Text that will appear on line #2
+AppId = "CHANGEME", -- The discord application ID.
+BigAsset = 'CHANGEME', -- Name of a rich presence asset, will show up as the big image
+BigText = 'CHANGEME', -- Text that will show when someone hovers over the big image
+SmallAsset = 'CHANGEME',-- Small image asset name
+Line1 = 'CHANGEME', -- Text that will appear on line #1
+Line2 = 'CHANGEME',  -- Text that will appear on line #2
 SmallText = 'CHANGEME', -- Text that will appear when hovering over small image
 Button1Text = 'CHANGEME', -- Text that will appear on the first button
 Button1Link = 'CHANGEME', -- Link that will open when pressing the first button
