@@ -11,7 +11,7 @@ The script itself is not framework dependent, but without a framework most style
  4. Put `ensure FiveM-Discord-Presence` at the bottom of your server.cfg
  5. Restart your server or start the resource through TxAdmin
 
-#Updating
+# Updating
 Replace these files in your existing script folder:
 - client.lua
 - server.lua
