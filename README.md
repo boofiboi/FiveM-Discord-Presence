@@ -11,16 +11,26 @@ The script itself is not framework dependent, but without a framework most style
  4. Put `ensure FiveM-Discord-Presence` at the bottom of your server.cfg
  5. Restart your server or start the resource through TxAdmin
 
+#Updating
+Replace these files in your existing script folder:
+- client.lua
+- server.lua
+- VERSION
+
+And depending on the notes of a release, possibly this:
+- config.lua
+
 # Usage
 
-The script itself does not have any usable commands/events. This will change soon.
+Edit **config.lua** according to the comments in it.
+![paintdotnet_13BW96B3Wn](https://github.com/boofiboi/FiveM-Discord-Presence/assets/79476279/857e1ef6-97be-4682-a8e4-73009afdf6bc)
+
 
 # Issues?
 
-Are the comments in the config not enough? Try looking [here](https://github.com/boofiboi/FiveM-Discord-Presence/wiki/Configuration) or 
-create a new [issue](https://github.com/boofiboi/FiveM-Discord-Presence/issues/new)
+Create a new [issue](https://github.com/boofiboi/FiveM-Discord-Presence/issues/new) or message me on Discord: boofiboi
 
 # Final words
 
-Big thanks to Virtual Vision Studios over on discord, who helped me catch a lot of errors. I'd consider this person to be my lead QA tester.
+Big thanks to Virtual Vision Studios over on discord, who helped me catch a lot of errors.
 
