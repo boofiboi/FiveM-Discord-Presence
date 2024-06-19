@@ -1,7 +1,7 @@
 -- Variables
 local LoadedAndReady = false
 PlayerData = {}
-Framework = TriggerServerEvent('discord:checkframework')
+Framework = TriggerServerEvent('Discord:Server:CheckFramework')
 if Framework == false then
 -- False means we reppin ESX.
 Config.Framework = 'ESX'
@@ -40,6 +40,12 @@ local h_tbl = {
 }
 
 
+--Player count handling
+function playercount()
+return '🎮🟢 ' .. '[' .. GetNumberOfPlayers() .. ']'
+end
+
+
 
 function custom()
     local year, month, day, hour, second, minute = GetUtcTime()
@@ -48,6 +54,8 @@ function custom()
     local randomElement = Config.CustomText[randomIndex]
     return randomElement
 end
+
+
 function healthdisplay()
 Health = math.floor(GetEntityHealth(PlayerPedId()) / 25)
     if Config.Framework == 'QB' then
@@ -72,24 +80,90 @@ end
 
 function nameandid() 
     if Config.Framework == 'QB' then
-       return '🧑' .. ' [ ' .. playerData.charinfo.firstname  .. ' ' .. playerData.charinfo.lastname .. ' ]'
+       return '🆔: ' .. GetPlayerServerId(PlayerId()) .. ' |' .. '👤'.. ' [ ' .. playerData.charinfo.firstname  .. ' ' .. playerData.charinfo.lastname .. ' ]'
     elseif Config.Framework == 'ESX' then
-        return  '🧑' .. ' [ ' .. ESX.GetPlayerData().firstName  .. ' ' .. ESX.GetPlayerData().lastName .. ' ]'
+        return  '🆔: ' .. GetPlayerServerId(PlayerId()) .. ' |' .. '👤'..  ' [ ' .. ESX.GetPlayerData().firstName  .. ' ' .. ESX.GetPlayerData().lastName .. ' ]'
     end
 end
+
+
+
+
+
+
+--Functions to match if any lines you can change in the RPC contain a function we can run.
+--I KNOW THERES A BETTER WAY TO DO THIS, IM LAZY OK? USE YOUR CODE EDITOR TO HIDE THESE WHEN EDITING THIS SCRIPT.
+function find_matching_string(variable)
+strings = {"nameandid", "location", "healthdisplay", "custom", "playercount"}
+    for _, str in ipairs(strings) do
+        if string.find(variable, str) then
+            return str
+        end
+    end
+    return nil  -- Return nil if no match is found
+end
+function BigText()
+    local matched_string = find_matching_string(Config.Discord.BigText)
+    if matched_string then
+        return _G[matched_string]()
+    else
+        return Config.Discord.BigText
+    end
+end
+function SmallText()
+    local matched_string = find_matching_string(Config.Discord.SmallText)
+    if matched_string then
+        return _G[matched_string]()
+    else
+        return Config.Discord.SmallText
+    end
+end
+function line1()
+    local matched_string = find_matching_string(Config.Discord.Line1)
+    if matched_string then
+        return _G[matched_string]()
+    else
+        return Config.Discord.Line1
+    end
+end
+function line2()
+    local matched_string = find_matching_string(Config.Discord.Line2)
+    if matched_string then
+        return _G[matched_string]()
+    else
+        return Config.Discord.Line2
+    end
+end
+function Button1()
+    local matched_string = find_matching_string(Config.Discord.Button1Text)
+    if matched_string then
+        return _G[matched_string]()
+    else
+        return Config.Discord.Button1Text
+    end
+end
+function Button2()
+    local matched_string = find_matching_string(Config.Discord.Button2Text)
+    if matched_string then
+        return _G[matched_string]()
+    else
+        return Config.Discord.Button2Text
+    end
+end
+
 
 --- Actual RPC part.
 Citizen.CreateThread(function()
     while true do
         if LoadedAndReady then
                 SetDiscordAppId(Config.Discord.AppId)
-                SetRichPresence(_G[Config.Line2]() .. string.char(10) .. _G[Config.Line1]())
+                SetRichPresence(line2() .. string.char(10) .. line1())
                 SetDiscordRichPresenceAsset(Config.Discord.BigAsset)
-                SetDiscordRichPresenceAssetText(Config.Discord.BigText)
+                SetDiscordRichPresenceAssetText(BigText())
                 SetDiscordRichPresenceAssetSmall(Config.Discord.SmallAsset)
-                SetDiscordRichPresenceAssetSmallText(Config.Discord.SmallText)
-                SetDiscordRichPresenceAction(0, Config.Discord.Button1Text, Config.Discord.Button1Link)
-                SetDiscordRichPresenceAction(1, Config.Discord.Button2Text, Config.Discord.Button2Link)
+                SetDiscordRichPresenceAssetSmallText(SmallText())
+                SetDiscordRichPresenceAction(0, Button1(), Config.Discord.Button1Link)
+                SetDiscordRichPresenceAction(1, Button2(), Config.Discord.Button2Link)
         end
         Citizen.Wait(Config.Delay)
     end
