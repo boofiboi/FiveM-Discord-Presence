@@ -8,7 +8,7 @@ The script itself is not framework dependent, but without a framework most style
  1. Download the latest release from the [Releases](https://github.com/boofiboi/FiveM-Discord-Presence/releases) tab
  2. Place the folder inside of the archive anywhere in your resources folder
  3. Configure the script according to the config file and the [Wiki](https://github.com/boofiboi/FiveM-Discord-Presence/wiki/Configuration)
- 4. Put `ensure Discord-Presence` anywhere in your server.cfg
+ 4. Put `ensure FiveM-Discord-Presence` at the bottom of your server.cfg
  5. Restart your server or start the resource through TxAdmin
 
 # Usage
@@ -22,5 +22,5 @@ create a new [issue](https://github.com/boofiboi/FiveM-Discord-Presence/issues/n
 
 # Final words
 
-Big thanks to Virtual Vision Studios over on discord, who helped me catch a lot of errors.
+Big thanks to Virtual Vision Studios over on discord, who helped me catch a lot of errors. I'd consider this person to be my lead QA tester.
 
