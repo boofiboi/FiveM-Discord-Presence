@@ -25,7 +25,7 @@ SmallText = 'healthdisplay'
 Line1 = 'nameandid'
 Line2 = 'location'
 --]] 
-
+Config.Framework = 'CHANGEME' -- Framework, can be either "QB", "ESX", or "STANDALONE"
 --Anything you dont want to show up can be left blank, except for AppId.
 Config.Discord = {
 AppId = "880855386628964422", -- The discord application ID.
