@@ -1,14 +1,6 @@
 -- Variables
 local LoadedAndReady = false
 PlayerData = {}
-Framework = TriggerServerEvent('Discord:Server:CheckFramework')
-if Framework == false then
--- False means we reppin ESX.
-Config.Framework = 'ESX'
-elseif Framework == true then
--- True means QB.
-Config.Framework = 'QB'
-end
 
 -- Framework shared objects.
 if Config.Framework == 'ESX' then
@@ -162,6 +154,6 @@ Config.Framework = 'ESX'
 end)
 RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
 LoadedAndReady = true
-Config.Framework = 'ESX'
+Config.Framework = 'QB'
 playerData = QBCore.Functions.GetPlayerData()
 end)

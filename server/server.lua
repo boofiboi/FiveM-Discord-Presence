@@ -1,22 +1,5 @@
--- Check what framework we reppin. Returns false if ESX, true if QB.
-ESX = exports['es_extended']:getSharedObject()
-RegisterServerEvent('Discord:Server:CheckFramework')
-AddEventHandler("Discord:Server:CheckFramework", function()
-ESX = GetResourceState("es_extended")
-QB = GetResourceState("qb-core")
 
-if ESX == "started" then
-    print('^3 [DEBUG]: Framework detected: ESX.')
-    return false
-elseif ESX == "missing" and QB == "started" then
-    print('^3 [DEBUG]: Framework detected: QB-Core.')
-    return true
-elseif ESX == "missing" and QB == "missing" then
-    print('^3 [DEBUG]:  No framework detected! Defaulting to standalone ')
-    return true
-end
 
-end)
 -- Update checking done very easily!!
 
 
