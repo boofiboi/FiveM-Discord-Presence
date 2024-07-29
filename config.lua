@@ -25,20 +25,20 @@ SmallText = 'healthdisplay'
 Line1 = 'nameandid'
 Line2 = 'location'
 --]] 
-Config.Framework = 'CHANGEME' -- Framework, can be either "QB", "ESX", or "STANDALONE"
+Config.Framework = 'ESX' -- Framework, can be either "QB", "ESX", or "STANDALONE"
 --Anything you dont want to show up can be left blank, except for AppId.
 Config.Discord = {
-AppId = "CHANGEME", -- The discord application ID.
-BigAsset = 'CHANGEME', -- Name of a rich presence asset, will show up as the big image
-BigText = 'CHANGEME', -- Text that will show when someone hovers over the big image
-SmallAsset = 'CHANGEME',-- Small image asset name
-Line1 = 'CHANGEME', -- Text that will appear on line #1
-Line2 = 'CHANGEME',  -- Text that will appear on line #2
-SmallText = 'CHANGEME', -- Text that will appear when hovering over small image
-Button1Text = 'CHANGEME', -- Text that will appear on the first button
-Button1Link = 'CHANGEME', -- Link that will open when pressing the first button
-Button2Text = 'CHANGEME', -- Text that will appear on the second button
-Button2Link = 'CHANGEME' -- Link that will open when pressing the second button.
+AppId = "880855386628964422", -- The discord application ID.
+BigAsset = '', -- Name of a rich presence asset, will show up as the big image
+BigText = '', -- Text that will show when someone hovers over the big image
+SmallAsset = '',-- Small image asset name
+Line1 = 'nameandid', -- Text that will appear on line #1
+Line2 = 'location',  -- Text that will appear on line #2
+SmallText = '', -- Text that will appear when hovering over small image
+Button1Text = '', -- Text that will appear on the first button
+Button1Link = '', -- Link that will open when pressing the first button
+Button2Text = '', -- Text that will appear on the second button
+Button2Link = '' -- Link that will open when pressing the second button.
 }
 
 

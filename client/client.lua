@@ -140,6 +140,23 @@ Citizen.CreateThread(function()
                 SetDiscordRichPresenceAssetSmallText(SmallText())
                 SetDiscordRichPresenceAction(0, Config.Discord.Button1Text, Config.Discord.Button1Link)
                 SetDiscordRichPresenceAction(1, Config.Discord.Button2Text, Config.Discord.Button2Link)
+        else
+            --- Detect if player's game is still loading, or is loaded already (This might be useless idk.)
+            if not NetworkIsPlayerActive(PlayerId()) then
+                SetDiscordAppId(Config.Discord.AppId)
+                SetRichPresence('Loading...')
+                SetDiscordRichPresenceAsset(Config.Discord.BigAsset)
+                SetDiscordRichPresenceAssetSmall(Config.Discord.SmallAsset)
+                SetDiscordRichPresenceAction(0, Config.Discord.Button1Text, Config.Discord.Button1Link)
+                SetDiscordRichPresenceAction(1, Config.Discord.Button2Text, Config.Discord.Button2Link)
+            else
+                SetDiscordAppId(Config.Discord.AppId)
+                SetRichPresence('Choosing a character.')
+                SetDiscordRichPresenceAsset(Config.Discord.BigAsset)
+                SetDiscordRichPresenceAssetSmall(Config.Discord.SmallAsset)
+                SetDiscordRichPresenceAction(0, Config.Discord.Button1Text, Config.Discord.Button1Link)
+                SetDiscordRichPresenceAction(1, Config.Discord.Button2Text, Config.Discord.Button2Link)
+            end
         end
         Citizen.Wait(Config.Delay)
     end
