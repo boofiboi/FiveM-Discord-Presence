@@ -1,21 +1,22 @@
 -- Variables
-local LoadedAndReady = false
+local CharacterLoaded = false
 PlayerData = {}
 
 -- Framework shared objects.
 if Config.Framework == 'ESX' then
      ESX = exports['es_extended']:getSharedObject()
     if ESX.GetPlayerData().identifier ~= nil then
-        LoadedAndReady = true
+        CharacterLoaded = true
     end
      playerData = ESX.GetPlayerData()
 elseif Config.Framework == 'QB' or Config.Framework == nil then
      QBCore = exports['qb-core']:GetCoreObject()
 if QBCore.Functions.GetPlayerData().citizenid ~= nil then
     playerData = QBCore.Functions.GetPlayerData()
-    LoadedAndReady = true
+    CharacterLoaded = true
     end
 end
+
 
 
 -- Health indicators
@@ -30,6 +31,44 @@ local h_tbl = {
     [7] = "[🟩🟩🟩🟩🟩🟩🟩]",
     [8] = "[🟩🟩🟩🟩🟩🟩🟩🟩]"
 }
+
+
+-- Since we need to start in automatic mode, set this variable
+doautomaticstuff = true
+
+
+if Config.UseLocations == true then
+    Citizen.CreateThread(function()
+    while true do
+        for _, v in pairs(Config.Locations) do
+-- language faster equivalent of GetDistanceBetweenCoords:
+local firstVec = vector3(v.x, v.y, v.z)
+local secondVec = GetEntityCoords(PlayerPedId())
+dist = #(firstVec - secondVec) -- Use Z
+
+
+            if dist < 20.0 then
+     print("player is at " .. v.text)           
+                doautomaticstuff = false
+                SetDiscordAppId(Config.Discord.AppId)
+                SetRichPresence(v.text)
+                SetDiscordRichPresenceAsset(Config.Discord.BigAsset)
+                SetDiscordRichPresenceAssetText(BigText())
+                SetDiscordRichPresenceAssetSmall(Config.Discord.SmallAsset)
+                SetDiscordRichPresenceAssetSmallText(SmallText())
+                SetDiscordRichPresenceAction(0, Config.Discord.Button1Text, Config.Discord.Button1Link)
+                SetDiscordRichPresenceAction(1, Config.Discord.Button2Text, Config.Discord.Button2Link)
+            else
+                doautomaticstuff = true
+            end
+end
+          
+    Citizen.Wait(20000)
+    end    
+end)
+end
+
+
 
 
 --Player count handling
@@ -131,7 +170,8 @@ end
 --- Actual RPC part.
 Citizen.CreateThread(function()
     while true do
-        if LoadedAndReady then
+        if doautomaticstuff then
+            if CharacterLoaded then
                 SetDiscordAppId(Config.Discord.AppId)
                 SetRichPresence(line2() .. string.char(10) .. line1())
                 SetDiscordRichPresenceAsset(Config.Discord.BigAsset)
@@ -158,6 +198,8 @@ Citizen.CreateThread(function()
                 SetDiscordRichPresenceAction(1, Config.Discord.Button2Text, Config.Discord.Button2Link)
             end
         end
+        end
+        
         Citizen.Wait(Config.Delay)
     end
 end)
@@ -166,11 +208,11 @@ end)
 
 -- Useless stuff just to know when player has chosen a character so we dont try getting his status when he doesnt have one.
 RegisterNetEvent('esx:playerLoaded', function(playerData)
-LoadedAndReady = true
+CharacterLoaded = true
 Config.Framework = 'ESX'
 end)
 RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
-LoadedAndReady = true
+CharacterLoaded = true
 Config.Framework = 'QB'
 playerData = QBCore.Functions.GetPlayerData()
 end)

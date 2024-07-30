@@ -25,20 +25,39 @@ SmallText = 'healthdisplay'
 Line1 = 'nameandid'
 Line2 = 'location'
 --]] 
-Config.Framework = 'CHANGEME' -- Framework, can be either "QB", "ESX", or "STANDALONE"
+Config.Framework = "ESX"
+Config.UseLocations = true
+Config.Locations = {
+    ['Main Garage'] = {
+        ["x"] = 226,
+        ["y"] = -780,
+        ["z"] = 30,
+        ["text"] = "Player is at the main garages" 
+    },
+    ['Mission square'] = {
+        ["x"] = 200,
+        ["y"] = -934,
+        ["z"] = 30,
+        ["text"] = "Player is at Mission Square"
+    }
+}
+
+
+
 --Anything you dont want to show up can be left blank, except for AppId.
+
 Config.Discord = {
-AppId = "CHANGEME", -- The discord application ID.
-BigAsset = 'CHANGEME', -- Name of a rich presence asset, will show up as the big image
-BigText = 'CHANGEME', -- Text that will show when someone hovers over the big image
-SmallAsset = 'CHANGEME',-- Small image asset name
-Line1 = 'CHANGEME', -- Text that will appear on line #1
-Line2 = 'CHANGEME',  -- Text that will appear on line #2
-SmallText = 'CHANGEME', -- Text that will appear when hovering over small image
-Button1Text = 'CHANGEME', -- Text that will appear on the first button
-Button1Link = 'CHANGEME', -- Link that will open when pressing the first button
-Button2Text = 'CHANGEME', -- Text that will appear on the second button
-Button2Link = 'CHANGEME' -- Link that will open when pressing the second button.
+AppId = "1115331174110335169", -- The discord application ID.
+BigAsset = 'mylogo', -- Name of a rich presence asset, will show up as the big image
+BigText = 'healthdisplay', -- Text that will show when someone hovers over the big image
+SmallAsset = 'galaxie',-- Small image asset name
+Line1 = 'nameandid', -- Text that will appear on line #1
+Line2 = 'location',  -- Text that will appear on line #2
+SmallText = 'custom', -- Text that will appear when hovering over small image
+Button1Text = '', -- Text that will appear on the first button
+Button1Link = '', -- Link that will open when pressing the first button
+Button2Text = '', -- Text that will appear on the second button
+Button2Link = '' -- Link that will open when pressing the second button.
 }
 
 
