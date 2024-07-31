@@ -2,20 +2,31 @@
 local CharacterLoaded = false
 PlayerData = {}
 
--- Framework shared objects.
-if Config.Framework == 'ESX' then
-     ESX = exports['es_extended']:getSharedObject()
+
+
+
+
+
+
+
+AddEventHandler('playerSpawned', function()
+print("Player has spawned.")
+        
+ if exports['es_extended']:getSharedObject() ~= nil then
+    print('ESX Detected.')
+       ESX = exports['es_extended']:getSharedObject()
     if ESX.GetPlayerData().identifier ~= nil then
-        CharacterLoaded = true
-    end
-     playerData = ESX.GetPlayerData()
-elseif Config.Framework == 'QB' or Config.Framework == nil then
-     QBCore = exports['qb-core']:GetCoreObject()
-if QBCore.Functions.GetPlayerData().citizenid ~= nil then
-    playerData = QBCore.Functions.GetPlayerData()
-    CharacterLoaded = true
-    end
-end
+           CharacterLoaded = true
+       end
+        playerData = ESX.GetPlayerData()
+   else
+        QBCore = exports['qb-core']:GetCoreObject()
+   if QBCore.Functions.GetPlayerData().citizenid ~= nil then
+       playerData = QBCore.Functions.GetPlayerData()
+       CharacterLoaded = true
+       end
+   end
+end)
 
 
 
@@ -33,41 +44,21 @@ local h_tbl = {
 }
 
 
--- Since we need to start in automatic mode, set this variable
-doautomaticstuff = true
 
 
-if Config.UseLocations == true then
-    Citizen.CreateThread(function()
-    while true do
+function checkDistances()
         for _, v in pairs(Config.Locations) do
 -- language faster equivalent of GetDistanceBetweenCoords:
 local firstVec = vector3(v.x, v.y, v.z)
 local secondVec = GetEntityCoords(PlayerPedId())
 dist = #(firstVec - secondVec) -- Use Z
 
-
             if dist < 20.0 then
      print("player is at " .. v.text)           
-                doautomaticstuff = false
-                SetDiscordAppId(Config.Discord.AppId)
-                SetRichPresence(v.text)
-                SetDiscordRichPresenceAsset(Config.Discord.BigAsset)
-                SetDiscordRichPresenceAssetText(BigText())
-                SetDiscordRichPresenceAssetSmall(Config.Discord.SmallAsset)
-                SetDiscordRichPresenceAssetSmallText(SmallText())
-                SetDiscordRichPresenceAction(0, Config.Discord.Button1Text, Config.Discord.Button1Link)
-                SetDiscordRichPresenceAction(1, Config.Discord.Button2Text, Config.Discord.Button2Link)
-            else
-                doautomaticstuff = true
+                return v.text
             end
 end
-          
-    Citizen.Wait(20000)
-    end    
-end)
 end
-
 
 
 
@@ -170,9 +161,26 @@ end
 --- Actual RPC part.
 Citizen.CreateThread(function()
     while true do
-        if doautomaticstuff then
-            if CharacterLoaded then
+        location = checkDistances()
+            if not CharacterLoaded then
                 SetDiscordAppId(Config.Discord.AppId)
+                SetRichPresence('Choosing a character.')
+                SetDiscordRichPresenceAsset(Config.Discord.BigAsset)
+                SetDiscordRichPresenceAssetSmall(Config.Discord.SmallAsset)
+                SetDiscordRichPresenceAction(0, Config.Discord.Button1Text, Config.Discord.Button1Link)
+                SetDiscordRichPresenceAction(1, Config.Discord.Button2Text, Config.Discord.Button2Link)
+            elseif location ~= nil then
+                    SetDiscordAppId(Config.Discord.AppId)
+                SetRichPresence(location)
+                SetDiscordRichPresenceAsset(Config.Discord.BigAsset)
+                SetDiscordRichPresenceAssetText(BigText())
+                SetDiscordRichPresenceAssetSmall(Config.Discord.SmallAsset)
+                SetDiscordRichPresenceAssetSmallText(SmallText())
+                SetDiscordRichPresenceAction(0, Config.Discord.Button1Text, Config.Discord.Button1Link)
+                SetDiscordRichPresenceAction(1, Config.Discord.Button2Text, Config.Discord.Button2Link)
+            elseif location == nil then
+                SetDiscordAppId(Config.Discord.AppId)
+                -- this function is a bastard, it stopped working for NO FUCKING REASON!
                 SetRichPresence(line2() .. string.char(10) .. line1())
                 SetDiscordRichPresenceAsset(Config.Discord.BigAsset)
                 SetDiscordRichPresenceAssetText(BigText())
@@ -180,28 +188,9 @@ Citizen.CreateThread(function()
                 SetDiscordRichPresenceAssetSmallText(SmallText())
                 SetDiscordRichPresenceAction(0, Config.Discord.Button1Text, Config.Discord.Button1Link)
                 SetDiscordRichPresenceAction(1, Config.Discord.Button2Text, Config.Discord.Button2Link)
-        else
-            --- Detect if player's game is still loading, or is loaded already (This might be useless idk.)
-            if not NetworkIsPlayerActive(PlayerId()) then
-                SetDiscordAppId(Config.Discord.AppId)
-                SetRichPresence('Loading...')
-                SetDiscordRichPresenceAsset(Config.Discord.BigAsset)
-                SetDiscordRichPresenceAssetSmall(Config.Discord.SmallAsset)
-                SetDiscordRichPresenceAction(0, Config.Discord.Button1Text, Config.Discord.Button1Link)
-                SetDiscordRichPresenceAction(1, Config.Discord.Button2Text, Config.Discord.Button2Link)
-            else
-                SetDiscordAppId(Config.Discord.AppId)
-                SetRichPresence('Choosing a character.')
-                SetDiscordRichPresenceAsset(Config.Discord.BigAsset)
-                SetDiscordRichPresenceAssetSmall(Config.Discord.SmallAsset)
-                SetDiscordRichPresenceAction(0, Config.Discord.Button1Text, Config.Discord.Button1Link)
-                SetDiscordRichPresenceAction(1, Config.Discord.Button2Text, Config.Discord.Button2Link)
-            end
-        end
-        end
-        
+                end 
         Citizen.Wait(Config.Delay)
-    end
+end
 end)
 
 

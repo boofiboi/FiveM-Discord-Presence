@@ -25,8 +25,9 @@ SmallText = 'healthdisplay'
 Line1 = 'nameandid'
 Line2 = 'location'
 --]] 
-Config.Framework = "ESX"
-Config.UseLocations = true
+
+
+-- You can populate this with your locations, and they will show up once a player gets close to it (around 20 metres, changeable in client.lua:56). If left empty, nothing happens and the script runs as normal.
 Config.Locations = {
     ['Main Garage'] = {
         ["x"] = 226,
