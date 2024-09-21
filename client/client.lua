@@ -34,7 +34,7 @@ local h_tbl = {
 
 --Player count handling
 function playercount()
-return '🎮🟢 ' .. '[' .. GetNumberOfPlayers() .. ']'
+return '🎮🟢 ' .. '[' .. NetworkGetNumConnectedPlayers() .. ']'
 end
 
 
