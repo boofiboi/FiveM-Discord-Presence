@@ -3,7 +3,7 @@ games { 'gta5' }
 
 author 'boofiboi'
 description 'Higly configurable Discord rich presence script.'
-version '1.9'
+version '2.0'
 
 shared_script 'config.lua'
 
