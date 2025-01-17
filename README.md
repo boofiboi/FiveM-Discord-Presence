@@ -26,8 +26,12 @@ And depending on the notes of a release, possibly this:
 Edit **config.lua** according to the comments in it.
 ![paintdotnet_13BW96B3Wn](https://github.com/boofiboi/FiveM-Discord-Presence/assets/79476279/857e1ef6-97be-4682-a8e4-73009afdf6bc)
 
+## Standalone requires modifications to the client.lua, specifically:
+#### Changing the first line from `local LoadedAndReady = false` to `LoadedAndReady = true`
 
 # Issues?
+
+### Keep in mind that buttons wont show on your Discord client, but will for other people.
 
 Create a new [issue](https://github.com/boofiboi/FiveM-Discord-Presence/issues/new) or message me on Discord: boofiboi
 
