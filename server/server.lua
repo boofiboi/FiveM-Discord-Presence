@@ -5,7 +5,7 @@
 
 PerformHttpRequest('https://raw.githubusercontent.com/boofiboi/FiveM-Discord-Presence/main/VERSION', function(Error, OnlineVersion, Header)
     -- TODO: Change this fucking function to ./ so it doesnt care what folder the script is in (PEOPLE KEEP PUTTING IT INTO DIFFERENT FOLDERS)
-    OfflineVersion = LoadResourceFile('FiveM-Discord-Presence', 'VERSION')
+    OfflineVersion = LoadResourceFile('../', 'VERSION')
     if Error ~= 200 then
         error("\x1b[31m[ERROR]\x1b[97m There was an error, it is: HTTP" .. Error .. "\x1b[0m")
         return 0
